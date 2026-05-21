@@ -29,7 +29,7 @@ export default function Hero() {
               {/* Roles */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
                 {roles.map((role, idx) => (
-                  <span key={idx} className="px-4 py-1.5 rounded-full bg-white dark:bg-primary-light border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-sm font-medium shadow-sm">
+                  <span key={idx} className={`chip-animate px-4 py-1.5 rounded-full bg-white dark:bg-primary-light border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-sm font-medium shadow-sm`} style={{ animationDelay: `${idx * 0.1 + 0.3}s` }}>
                     {role}
                   </span>
                 ))}
@@ -70,10 +70,10 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-1 flex justify-center"
           >
-            <img 
-                  src="/avatar.png" 
-                  alt={name} 
-                  className="w-72 md:w-96 object-contain object-top drop-shadow-2xl"
+            <img
+                  src="/avatar.png"
+                  alt={name}
+                  className="float-anim w-72 md:w-96 object-contain object-top drop-shadow-2xl"
                 />
           </motion.div>
 
