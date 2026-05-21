@@ -93,6 +93,29 @@
       "Web Technologies"
     ]
   },
+  "research": [
+    {
+      "title": "Empowering B.Com Graduates for the Digital Workforce: Skills, Curriculum & Industry Expectations",
+      "type": "Research Publication",
+      "date": "Recent",
+      "description": "An in-depth analysis of the skill gaps between academic curricula and digital industry demands, proposing strategic educational interventions."
+    }
+  ],
+  "certifications": [
+    { "title": "Software Testing Certification", "issuer": "Industry Standard" },
+    { "title": "NAAC/IQAC Workshops", "issuer": "Academic Quality" },
+    { "title": "FDP Certifications", "issuer": "Faculty Development" },
+    { "title": "NPTEL Certifications", "issuer": "Govt. of India" },
+    { "title": "Coursera Certifications", "issuer": "Coursera" },
+    { "title": "Udemy Certifications", "issuer": "Udemy" }
+  ],
+  "achievements": [
+    { "title": "Department Leadership", "desc": "Successfully heading academic and administrative operations." },
+    { "title": "IQAC Coordination", "desc": "Driving institutional quality enhancement initiatives." },
+    { "title": "NSS Leadership", "desc": "Organizing extensive community service and extension programs." },
+    { "title": "Student Development", "desc": "Fostering programs for skill enhancement and industry readiness." },
+    { "title": "Event Organization", "desc": "Coordinating national-level academic seminars and workshops." }
+  ],
   "contact": {
     "phone": "+91 00000 00000",
     "email": "contact@placeholder.com",

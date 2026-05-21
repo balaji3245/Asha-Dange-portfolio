@@ -1,16 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, CheckCircle } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Certifications() {
-  const certifications = [
-    { title: "Software Testing Certification", issuer: "Industry Standard", icon: <CheckCircle /> },
-    { title: "NAAC/IQAC Workshops", issuer: "Academic Quality", icon: <Award /> },
-    { title: "FDP Certifications", issuer: "Faculty Development", icon: <Award /> },
-    { title: "NPTEL Certifications", issuer: "Govt. of India", icon: <Award /> },
-    { title: "Coursera Certifications", issuer: "Coursera", icon: <CheckCircle /> },
-    { title: "Udemy Certifications", issuer: "Udemy", icon: <CheckCircle /> }
-  ];
+  const certifications = portfolioData.certifications || [];
 
   return (
     <section id="certifications" className="py-24 bg-white dark:bg-primary transition-colors duration-300">
@@ -40,7 +34,7 @@ export default function Certifications() {
               className="glass-card p-6 border border-slate-100 dark:border-white/5 flex items-start gap-4"
             >
               <div className="p-3 bg-secondary/10 dark:bg-primary rounded-xl text-secondary dark:text-accent shrink-0">
-                {cert.icon}
+                <Award />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-slate-800 dark:text-white leading-tight mb-1">

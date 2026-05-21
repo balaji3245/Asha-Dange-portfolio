@@ -1,15 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Users, Star, Target, Presentation } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Achievements() {
-  const achievements = [
-    { title: "Department Leadership", desc: "Successfully heading academic and administrative operations.", icon: <Target size={32} /> },
-    { title: "IQAC Coordination", desc: "Driving institutional quality enhancement initiatives.", icon: <Star size={32} /> },
-    { title: "NSS Leadership", desc: "Organizing extensive community service and extension programs.", icon: <Trophy size={32} /> },
-    { title: "Student Development", desc: "Fostering programs for skill enhancement and industry readiness.", icon: <Users size={32} /> },
-    { title: "Event Organization", desc: "Coordinating national-level academic seminars and workshops.", icon: <Presentation size={32} /> }
-  ];
+  const achievements = portfolioData.achievements || [];
 
   return (
     <section id="achievements" className="py-24 bg-slate-50 dark:bg-primary-light transition-colors duration-300">
@@ -38,7 +33,7 @@ export default function Achievements() {
               className="glass-card p-8 flex flex-col items-center text-center group hover:bg-white dark:hover:bg-primary transition-all duration-300"
             >
               <div className="p-4 bg-secondary/10 dark:bg-accent/10 rounded-full text-secondary dark:text-accent mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
-                {item.icon}
+                <Trophy size={32} />
               </div>
               <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">
                 {item.title}

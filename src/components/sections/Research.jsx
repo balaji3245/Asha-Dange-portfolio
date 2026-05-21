@@ -1,16 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, ExternalLink } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Research() {
-  const publications = [
-    {
-      title: "Empowering B.Com Graduates for the Digital Workforce: Skills, Curriculum & Industry Expectations",
-      type: "Research Publication",
-      date: "Recent",
-      description: "An in-depth analysis of the skill gaps between academic curricula and digital industry demands, proposing strategic educational interventions."
-    }
-  ];
+  const publications = portfolioData.research || [];
 
   return (
     <section id="research" className="py-24 bg-slate-50 dark:bg-primary-light transition-colors duration-300">
