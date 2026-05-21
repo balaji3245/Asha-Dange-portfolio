@@ -7,7 +7,7 @@ export default function Experience() {
   const experiences = portfolioData.experience;
 
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="py-24 overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
@@ -24,7 +24,7 @@ export default function Experience() {
 
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-white/10 transform md:-translate-x-1/2" />
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-white/10 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => {
@@ -40,12 +40,12 @@ export default function Experience() {
                 >
                   
                   {/* Timeline Dot */}
-                  <div className="absolute left-4 md:left-1/2 w-10 h-10 rounded-full bg-white dark:bg-primary border-4 border-secondary dark:border-accent transform -translate-x-1/2 flex items-center justify-center shadow-lg z-10 mt-6 md:mt-0">
-                    <Briefcase size={16} className="text-secondary dark:text-accent" />
+                  <div className="absolute left-5 md:left-1/2 w-8 h-8 rounded-full bg-white dark:bg-primary border-4 border-secondary dark:border-accent transform -translate-x-1/2 flex items-center justify-center shadow-lg z-10 mt-6 md:mt-0">
+                    <Briefcase size={14} className="text-secondary dark:text-accent" />
                   </div>
 
                   {/* Content Card */}
-                  <div className={`ml-14 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} w-full`}>
+                  <div className={`ml-12 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} w-full min-w-0`}>
                     <div className="glass-card p-6 lg:p-8 hover:shadow-xl transition-shadow duration-300">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                         <h3 className="text-xl font-bold text-slate-800 dark:text-white">
