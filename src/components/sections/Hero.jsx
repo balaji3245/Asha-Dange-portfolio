@@ -73,7 +73,7 @@ export default function Hero() {
             <img
                   src="/avatar.png"
                   alt={name}
-                  className="float-anim w-72 md:w-96 object-contain object-top drop-shadow-2xl"
+                  className="w-72 md:w-96 object-contain object-top drop-shadow-2xl"
                 />
           </motion.div>
 
