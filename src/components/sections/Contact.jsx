@@ -103,7 +103,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Name</label>
                     <input 
                       type="text" 
-                      placeholder="John Doe"
+
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white"
                     />
                   </div>
@@ -111,7 +111,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Email</label>
                     <input 
                       type="email" 
-                      placeholder="john@example.com"
+
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white"
                     />
                   </div>
@@ -121,7 +121,7 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Subject</label>
                   <input 
                     type="text" 
-                    placeholder="How can I help you?"
+
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white"
                   />
                 </div>
@@ -130,7 +130,7 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
                   <textarea 
                     rows="4" 
-                    placeholder="Write your message here..."
+
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white resize-none"
                   ></textarea>
                 </div>
