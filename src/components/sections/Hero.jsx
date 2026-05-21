@@ -73,7 +73,8 @@ export default function Hero() {
             <img
                   src="/avatar.png"
                   alt={name}
-                  className="w-72 md:w-96 object-contain object-top drop-shadow-2xl"
+                  className="w-72 md:w-96 object-contain object-top"
+                  style={{ filter: 'drop-shadow(0 20px 40px rgba(59,130,246,0.35)) drop-shadow(0 8px 16px rgba(0,0,0,0.15))' }}
                 />
           </motion.div>
 
