@@ -92,11 +92,11 @@ export default function Hero() {
           >
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 bg-gradient-to-tr from-secondary to-accent">
               <div className="w-full h-full rounded-full bg-white dark:bg-primary flex items-center justify-center overflow-hidden border-4 border-white dark:border-primary">
-                {/* Professional Avatar Placeholder */}
-                <div className="text-center text-slate-400 dark:text-slate-500">
-                  <span className="block text-6xl mb-2">👩‍🏫</span>
-                  <span className="text-sm font-medium">Professional Avatar</span>
-                </div>
+                <img 
+                  src="/avatar.png" 
+                  alt={name} 
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
             </div>
           </motion.div>
