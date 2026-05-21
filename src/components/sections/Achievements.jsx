@@ -7,7 +7,7 @@ export default function Achievements() {
   const achievements = portfolioData.achievements || [];
 
   return (
-    <section id="achievements" className="py-24 bg-slate-50 dark:bg-primary-light transition-colors duration-300">
+    <section id="achievements" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div

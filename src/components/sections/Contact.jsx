@@ -7,7 +7,7 @@ export default function Contact() {
   const { phone, email, location } = portfolioData.contact;
 
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-primary transition-colors duration-300">
+    <section id="contact" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
