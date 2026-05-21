@@ -7,7 +7,7 @@ export default function Certifications() {
   const certifications = portfolioData.certifications || [];
 
   return (
-    <section id="certifications" className="py-14 md:py-24">
+    <section id="certifications" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div

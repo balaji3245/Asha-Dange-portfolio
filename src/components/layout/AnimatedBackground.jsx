@@ -39,7 +39,7 @@ export default function AnimatedBackground() {
 
         {/* Orb 1 — top left, blue — blur is static, only transform animates */}
         <div
-          className="orb-1 absolute -top-20 -left-20 w-[280px] h-[280px] sm:w-[500px] sm:h-[500px] rounded-full will-change-transform"
+          className="orb-1 absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full will-change-transform"
           style={{
             background: 'radial-gradient(circle, rgba(59,130,246,0.20) 0%, transparent 70%)',
             filter: 'blur(60px)',
@@ -48,7 +48,7 @@ export default function AnimatedBackground() {
 
         {/* Orb 2 — bottom right, indigo */}
         <div
-          className="orb-2 absolute -bottom-20 -right-20 w-[260px] h-[260px] sm:w-[450px] sm:h-[450px] rounded-full will-change-transform"
+          className="orb-2 absolute -bottom-40 -right-40 w-[450px] h-[450px] rounded-full will-change-transform"
           style={{
             background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)',
             filter: 'blur(60px)',
@@ -57,7 +57,7 @@ export default function AnimatedBackground() {
 
         {/* Orb 3 — center, subtle cyan */}
         <div
-          className="orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] rounded-full will-change-transform"
+          className="orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full will-change-transform"
           style={{
             background: 'radial-gradient(circle, rgba(6,182,212,0.10) 0%, transparent 70%)',
             filter: 'blur(70px)',
