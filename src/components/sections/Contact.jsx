@@ -145,13 +145,6 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="w-full h-48 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center overflow-hidden">
-              <div className="text-center text-slate-500 dark:text-slate-400">
-                <MapPin size={32} className="mx-auto mb-2 opacity-50" />
-                <span className="text-sm font-medium">Google Maps Integration Placeholder</span>
-              </div>
-            </div>
 
           </motion.div>
 
