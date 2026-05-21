@@ -3,6 +3,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import ScrollProgress from '../components/layout/ScrollProgress';
 import FloatingActionBtn from '../components/layout/FloatingActionBtn';
+import AnimatedBackground from '../components/layout/AnimatedBackground';
 
 import LoadingScreen from '../components/LoadingScreen';
 import Hero from '../components/sections/Hero';
@@ -22,6 +23,7 @@ export default function MainSite() {
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       
       <div className={`min-h-screen transition-opacity duration-700 ${isLoading ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}>
+        <AnimatedBackground />
         <ScrollProgress />
         <Navbar />
         
