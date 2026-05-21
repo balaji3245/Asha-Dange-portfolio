@@ -70,15 +70,13 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-1 flex justify-center"
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 bg-gradient-to-tr from-secondary to-accent">
-              <div className="w-full h-full rounded-full bg-white dark:bg-primary flex items-center justify-center overflow-hidden border-4 border-white dark:border-primary">
+            <div className="w-72 h-72 md:w-96 md:h-96 overflow-hidden shadow-2xl">
                 <img 
                   src="/avatar.png" 
                   alt={name} 
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
-            </div>
           </motion.div>
 
         </div>
