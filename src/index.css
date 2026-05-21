@@ -113,9 +113,13 @@ a[href="/resume.pdf"]:hover {
   will-change: transform;
 }
 
-/* ── Section divider glow ── */
-.divider-glow {
-  background: linear-gradient(90deg, transparent, #3B82F6, transparent);
-  height: 1px;
-  opacity: 0.4;
+/* ── Mobile small text override ── */
+.mobile-sm {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .mobile-sm {
+    font-size: 1.125rem;
+  }
 }

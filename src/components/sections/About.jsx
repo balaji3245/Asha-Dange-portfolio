@@ -45,7 +45,7 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
               Bridging Academia & Industry Quality
             </h3>
-            <p className="text-xs md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="mobile-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               {summary}
             </p>
             
