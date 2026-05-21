@@ -16,7 +16,7 @@ export default function Footer() {
             <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">
               {name}
             </h3>
-            <p className="text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
+            <p className="text-xs md:text-base text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
               {tagline}
             </p>
           </div>
