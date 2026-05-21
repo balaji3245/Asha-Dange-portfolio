@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import ScrollProgress from '../components/layout/ScrollProgress';
 import FloatingActionBtn from '../components/layout/FloatingActionBtn';
 import AnimatedBackground from '../components/layout/AnimatedBackground';
 
@@ -24,7 +23,6 @@ export default function MainSite() {
       
       <div className={`min-h-screen transition-opacity duration-700 ${isLoading ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}>
         <AnimatedBackground />
-        <ScrollProgress />
         <Navbar />
         
         <main>
