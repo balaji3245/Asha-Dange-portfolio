@@ -15,16 +15,16 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed w-full z-50 top-0 transition-all duration-300 glass-card rounded-none border-t-0 border-x-0 border-b border-slate-200 dark:border-white/10 bg-white/80 dark:bg-primary-light/80 overflow-hidden">
+    <nav className="fixed w-full z-50 top-0 transition-all duration-300 glass-card rounded-none border-t-0 border-x-0 border-b border-slate-200 dark:border-white/10 bg-white/80 dark:bg-primary-light/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer min-w-0" onClick={() => window.scrollTo(0,0)}>
+          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
             <div className="p-2 bg-secondary/10 dark:bg-accent/10 rounded-lg text-secondary dark:text-accent flex-shrink-0">
-              <BookOpen size={22} />
+              <BookOpen size={24} />
             </div>
-            <span className="font-bold text-lg tracking-tight text-slate-800 dark:text-white truncate">
+            <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">
               Asha Dange
             </span>
           </div>

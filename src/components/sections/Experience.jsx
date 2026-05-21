@@ -7,7 +7,7 @@ export default function Experience() {
   const experiences = portfolioData.experience;
 
   return (
-    <section id="experience" className="py-24 overflow-hidden">
+    <section id="experience" className="py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
@@ -45,7 +45,7 @@ export default function Experience() {
                   </div>
 
                   {/* Content Card */}
-                  <div className={`ml-12 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} w-full min-w-0`}>
+                  <div className={`ml-12 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} w-full`}>
                     <div className="glass-card p-6 lg:p-8 hover:shadow-xl transition-shadow duration-300">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                         <h3 className="text-xl font-bold text-slate-800 dark:text-white">
