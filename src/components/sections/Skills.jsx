@@ -7,7 +7,7 @@ export default function Skills() {
   const { domain: domainSkills, tools } = portfolioData.skills;
 
   return (
-    <section id="skills" className="py-24">
+    <section id="skills" className="py-14 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
