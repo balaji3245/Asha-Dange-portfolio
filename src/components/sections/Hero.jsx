@@ -70,13 +70,11 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-1 flex justify-center"
           >
-            <div className="w-72 h-72 md:w-96 md:h-96 overflow-hidden shadow-2xl">
-                <img 
+            <img 
                   src="/avatar.png" 
                   alt={name} 
-                  className="w-full h-full object-cover object-top"
+                  className="w-72 md:w-96 object-contain object-top drop-shadow-2xl"
                 />
-              </div>
           </motion.div>
 
         </div>
