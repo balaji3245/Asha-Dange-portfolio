@@ -1,22 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Settings } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Skills() {
-  const domainSkills = [
-    { name: "Academic Administration", level: 95 },
-    { name: "Software Testing", level: 90 },
-    { name: "Quality Assurance", level: 90 },
-    { name: "Curriculum Planning", level: 85 },
-    { name: "Student Mentorship", level: 95 },
-    { name: "API & Database Testing", level: 85 }
-  ];
-
-  const tools = [
-    "Selenium", "Java", "MySQL", "Postman", 
-    "JIRA", "Cypress", "Qase", "Sauce Labs", 
-    "Web Technologies"
-  ];
+  const { domain: domainSkills, tools } = portfolioData.skills;
 
   return (
     <section id="skills" className="py-24 bg-white dark:bg-primary transition-colors duration-300">

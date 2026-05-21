@@ -1,13 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Hero() {
-  const roles = [
-    "HOD – Computer Department",
-    "IQAC Coordinator",
-    "NSS Officer"
-  ];
+  const { name, roles, tagline } = portfolioData.hero;
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-12">
@@ -46,7 +43,7 @@ export default function Hero() {
                 Academic Professional
               </h2>
               <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-                Asha Dange
+                {name}
               </h1>
               
               {/* Roles */}
@@ -65,7 +62,7 @@ export default function Hero() {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                “Dedicated academic leader passionate about technology education, institutional quality enhancement, and student development.”
+                {tagline}
               </p>
             </motion.div>
 

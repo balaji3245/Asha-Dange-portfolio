@@ -1,22 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, BookOpen, Users, ShieldCheck } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function About() {
-  const stats = [
-    { label: "Years Experience", value: "10+", icon: <Award size={24} /> },
-    { label: "Academic Leadership", value: "HOD", icon: <BookOpen size={24} /> },
-    { label: "Institutional Roles", value: "NAAC/NSS", icon: <Users size={24} /> },
-    { label: "QA Industry Exp.", value: "SDET", icon: <ShieldCheck size={24} /> }
-  ];
+  const { summary, highlights, stats } = portfolioData.about;
 
-  const highlights = [
-    "Academic leadership & Computer Science education",
-    "IQAC & NAAC coordination",
-    "Student mentorship & development programs",
-    "Software testing expertise (Manual & Automation)",
-    "Institutional development activities"
-  ];
+  // Map dynamic string labels back to Lucide icons
+  const iconMap = {
+    "Years Experience": <Award size={24} />,
+    "Academic Leadership": <BookOpen size={24} />,
+    "Institutional Roles": <Users size={24} />,
+    "QA Industry Exp.": <ShieldCheck size={24} />
+  };
 
   return (
     <section id="about" className="py-24 bg-white dark:bg-primary transition-colors duration-300">
@@ -50,10 +46,7 @@ export default function About() {
               Bridging Academia & Industry Quality
             </h3>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              With over a decade of multifaceted experience spanning higher education and the corporate software testing sector, I specialize in bridging the gap between academic curriculum and industry expectations. 
-            </p>
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              As the Head of the Computer Department and IQAC Coordinator, I am deeply committed to institutional quality enhancement, fostering student success, and driving strategic academic initiatives.
+              {summary}
             </p>
             
             <ul className="pt-4 space-y-3">
@@ -83,7 +76,7 @@ export default function About() {
                 className="p-6 glass-card border border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-primary-light/50 flex flex-col items-center text-center space-y-3"
               >
                 <div className="p-3 bg-white dark:bg-primary rounded-xl text-secondary dark:text-accent shadow-sm">
-                  {stat.icon}
+                  {iconMap[stat.label] || <Award size={24} />}
                 </div>
                 <h4 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white">
                   {stat.value}

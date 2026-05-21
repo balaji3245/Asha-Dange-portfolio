@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Contact() {
+  const { phone, email, location } = portfolioData.contact;
+
   return (
     <section id="contact" className="py-24 bg-white dark:bg-primary transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +47,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Call Me</h4>
-                  <p className="text-lg font-medium text-slate-800 dark:text-white">+91 00000 00000</p>
+                  <p className="text-lg font-medium text-slate-800 dark:text-white">{phone}</p>
                 </div>
               </div>
 
@@ -54,7 +57,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Email Me</h4>
-                  <p className="text-lg font-medium text-slate-800 dark:text-white">contact@placeholder.com</p>
+                  <p className="text-lg font-medium text-slate-800 dark:text-white">{email}</p>
                 </div>
               </div>
 
@@ -64,7 +67,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Location</h4>
-                  <p className="text-lg font-medium text-slate-800 dark:text-white">Latur, Maharashtra, India</p>
+                  <p className="text-lg font-medium text-slate-800 dark:text-white">{location}</p>
                 </div>
               </div>
             </div>

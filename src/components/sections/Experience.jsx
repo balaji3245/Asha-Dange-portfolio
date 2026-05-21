@@ -1,81 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
-
-const experiences = [
-  {
-    role: "HOD – Computer Department",
-    company: "Academic Institution",
-    period: "2024–Present",
-    responsibilities: [
-      "Overseeing departmental academic operations and curriculum planning.",
-      "Managing faculty allocations and departmental resources.",
-      "Driving initiatives for student skill enhancement and industry readiness."
-    ],
-    achievements: "Successfully implemented modern teaching pedagogies and increased student placement rates.",
-    tools: ["Curriculum Planning", "Academic Administration", "Strategic Leadership"]
-  },
-  {
-    role: "IQAC Coordinator & NSS Officer",
-    company: "Academic Institution",
-    period: "Ongoing",
-    responsibilities: [
-      "Coordinating NAAC accreditation processes and documentation.",
-      "Organizing extension activities and community service programs.",
-      "Implementing quality benchmarks for academic and administrative activities."
-    ],
-    achievements: "Spearheaded successful quality audits and organized multiple community outreach programs.",
-    tools: ["NAAC Guidelines", "Quality Audits", "Event Management"]
-  },
-  {
-    role: "QA Test Engineer",
-    company: "Sagitta Consulting Solutions",
-    period: "2023–2024",
-    responsibilities: [
-      "Designed and executed comprehensive manual and automated test cases.",
-      "Performed API and Database testing to ensure data integrity and security.",
-      "Collaborated with development teams using Agile/Scrum methodologies."
-    ],
-    achievements: "Reduced defect leakage by 30% through robust automation suites.",
-    tools: ["Selenium", "Java", "Postman", "MySQL", "JIRA", "Cypress"]
-  },
-  {
-    role: "Assistant Professor – BCA",
-    company: "Academic Institution",
-    period: "2019–2023",
-    responsibilities: [
-      "Delivered lectures on core Computer Science subjects (Java, DB, Web Tech).",
-      "Mentored students for academic projects and technical presentations.",
-      "Evaluated student performance and provided constructive feedback."
-    ],
-    achievements: "Achieved 100% pass rate in taught subjects for three consecutive semesters.",
-    tools: ["Java", "Web Technologies", "Mentorship", "Evaluation"]
-  },
-  {
-    role: "Visiting Faculty",
-    company: "Academic Institution",
-    period: "2018–2019",
-    responsibilities: [
-      "Conducted specialized sessions on software engineering and databases.",
-      "Prepared comprehensive study materials and assignments."
-    ],
-    achievements: "Received excellent feedback from students for practical teaching approach.",
-    tools: ["Software Engineering", "DBMS"]
-  },
-  {
-    role: "Assistant Professor – BCA",
-    company: "Academic Institution",
-    period: "2012–2017",
-    responsibilities: [
-      "Initiated foundational computer science courses for undergraduate students.",
-      "Organized departmental seminars and workshops."
-    ],
-    achievements: "Established the first departmental tech club for students.",
-    tools: ["C/C++", "HTML/CSS", "Academic Planning"]
-  }
-];
+import portfolioData from '../../data/portfolioData.json';
 
 export default function Experience() {
+  const experiences = portfolioData.experience;
+
   return (
     <section id="experience" className="py-24 bg-slate-50 dark:bg-primary-light transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +31,7 @@ export default function Experience() {
               const isEven = index % 2 === 0;
               return (
                 <motion.div
-                  key={index}
+                  key={exp.id || index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}

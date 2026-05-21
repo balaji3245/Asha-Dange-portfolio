@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "name": "Asha Dange",
+    "roles": [
+      "HOD – Computer Department",
+      "IQAC Coordinator",
+      "NSS Officer"
+    ],
+    "tagline": "“Dedicated academic leader passionate about technology education, institutional quality enhancement, and student development.”"
+  },
+  "about": {
+    "summary": "With over a decade of multifaceted experience spanning higher education and the corporate software testing sector, I specialize in bridging the gap between academic curriculum and industry expectations. As the Head of the Computer Department and IQAC Coordinator, I am deeply committed to institutional quality enhancement, fostering student success, and driving strategic academic initiatives.",
+    "highlights": [
+      "Academic leadership & Computer Science education",
+      "IQAC & NAAC coordination",
+      "Student mentorship & development programs",
+      "Software testing expertise (Manual & Automation)",
+      "Institutional development activities"
+    ],
+    "stats": [
+      { "label": "Years Experience", "value": "10+" },
+      { "label": "Academic Leadership", "value": "HOD" },
+      { "label": "Institutional Roles", "value": "NAAC/NSS" },
+      { "label": "QA Industry Exp.", "value": "SDET" }
+    ]
+  },
+  "experience": [
+    {
+      "id": "1",
+      "role": "HOD – Computer Department",
+      "company": "Academic Institution",
+      "period": "2024–Present",
+      "responsibilities": [
+        "Overseeing departmental academic operations and curriculum planning.",
+        "Managing faculty allocations and departmental resources.",
+        "Driving initiatives for student skill enhancement and industry readiness."
+      ],
+      "achievements": "Successfully implemented modern teaching pedagogies and increased student placement rates.",
+      "tools": ["Curriculum Planning", "Academic Administration", "Strategic Leadership"]
+    },
+    {
+      "id": "2",
+      "role": "IQAC Coordinator & NSS Officer",
+      "company": "Academic Institution",
+      "period": "Ongoing",
+      "responsibilities": [
+        "Coordinating NAAC accreditation processes and documentation.",
+        "Organizing extension activities and community service programs.",
+        "Implementing quality benchmarks for academic and administrative activities."
+      ],
+      "achievements": "Spearheaded successful quality audits and organized multiple community outreach programs.",
+      "tools": ["NAAC Guidelines", "Quality Audits", "Event Management"]
+    },
+    {
+      "id": "3",
+      "role": "QA Test Engineer",
+      "company": "Sagitta Consulting Solutions",
+      "period": "2023–2024",
+      "responsibilities": [
+        "Designed and executed comprehensive manual and automated test cases.",
+        "Performed API and Database testing to ensure data integrity and security.",
+        "Collaborated with development teams using Agile/Scrum methodologies."
+      ],
+      "achievements": "Reduced defect leakage by 30% through robust automation suites.",
+      "tools": ["Selenium", "Java", "Postman", "MySQL", "JIRA", "Cypress"]
+    },
+    {
+      "id": "4",
+      "role": "Assistant Professor – BCA",
+      "company": "Academic Institution",
+      "period": "2019–2023",
+      "responsibilities": [
+        "Delivered lectures on core Computer Science subjects (Java, DB, Web Tech).",
+        "Mentored students for academic projects and technical presentations.",
+        "Evaluated student performance and provided constructive feedback."
+      ],
+      "achievements": "Achieved 100% pass rate in taught subjects for three consecutive semesters.",
+      "tools": ["Java", "Web Technologies", "Mentorship", "Evaluation"]
+    }
+  ],
+  "skills": {
+    "domain": [
+      { "name": "Academic Administration", "level": 95 },
+      { "name": "Software Testing", "level": 90 },
+      { "name": "Quality Assurance", "level": 90 },
+      { "name": "Curriculum Planning", "level": 85 },
+      { "name": "Student Mentorship", "level": 95 },
+      { "name": "API & Database Testing", "level": 85 }
+    ],
+    "tools": [
+      "Selenium", "Java", "MySQL", "Postman", 
+      "JIRA", "Cypress", "Qase", "Sauce Labs", 
+      "Web Technologies"
+    ]
+  },
+  "contact": {
+    "phone": "+91 00000 00000",
+    "email": "contact@placeholder.com",
+    "location": "Latur, Maharashtra, India"
+  }
+}
