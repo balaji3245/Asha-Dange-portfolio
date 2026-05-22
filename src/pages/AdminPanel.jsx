@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import portfolioData from '../data/portfolioData.json';
-import { Save, CheckCircle, AlertCircle, ArrowLeft, Plus, Trash2, LayoutDashboard, User, Briefcase, Code, Phone, FileJson, Award, Trophy, BookOpen } from 'lucide-react';
+import messagesData from '../data/messages.json';
+import { Save, CheckCircle, AlertCircle, ArrowLeft, Plus, Trash2, LayoutDashboard, User, Briefcase, Code, Phone, FileJson, Award, Trophy, BookOpen, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AdminPanel() {
@@ -19,6 +20,7 @@ export default function AdminPanel() {
     { id: 'Certifications', icon: <Award size={18} /> },
     { id: 'Achievements', icon: <Trophy size={18} /> },
     { id: 'Contact', icon: <Phone size={18} /> },
+    { id: 'Inbox', icon: <Mail size={18} /> },
     { id: 'Advanced', icon: <FileJson size={18} /> }
   ];
 
@@ -215,6 +217,46 @@ export default function AdminPanel() {
               <div><label className="block text-sm font-semibold mb-1 dark:text-slate-300">Email Address</label><input type="email" value={data.contact.email} onChange={e => handleChange('contact', 'email', e.target.value)} className="w-full p-3 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" /></div>
               <div><label className="block text-sm font-semibold mb-1 dark:text-slate-300">Phone Number</label><input type="text" value={data.contact.phone} onChange={e => handleChange('contact', 'phone', e.target.value)} className="w-full p-3 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" /></div>
               <div><label className="block text-sm font-semibold mb-1 dark:text-slate-300">Location</label><input type="text" value={data.contact.location} onChange={e => handleChange('contact', 'location', e.target.value)} className="w-full p-3 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" /></div>
+            </div>
+          )}
+
+          {activeTab === 'Inbox' && (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                  <Mail size={20} className="text-secondary" /> Contact Messages
+                </h3>
+                <span className="text-sm font-medium bg-slate-200 dark:bg-white/10 px-3 py-1 rounded-full dark:text-slate-300">
+                  Total: {messagesData.length}
+                </span>
+              </div>
+              
+              {messagesData.length === 0 ? (
+                <div className="glass-card p-12 text-center text-slate-500 dark:text-slate-400">
+                  <Mail size={48} className="mx-auto mb-4 opacity-20" />
+                  <p>Your inbox is empty.</p>
+                </div>
+              ) : (
+                <div className="grid gap-4">
+                  {[...messagesData].reverse().map((msg) => (
+                    <div key={msg.id} className="glass-card p-6 space-y-3 relative group border-l-4 border-l-secondary">
+                      <div className="flex justify-between items-start gap-4">
+                        <div>
+                          <h4 className="font-bold text-slate-800 dark:text-white text-lg">{msg.name}</h4>
+                          <a href={`mailto:${msg.email}`} className="text-sm text-secondary hover:underline">{msg.email}</a>
+                        </div>
+                        <span className="text-xs text-slate-400 bg-slate-100 dark:bg-white/5 px-2 py-1 rounded-md whitespace-nowrap">
+                          {new Date(msg.date).toLocaleString()}
+                        </span>
+                      </div>
+                      {msg.subject && <div className="font-semibold text-slate-700 dark:text-slate-200 text-sm mt-2">Subject: {msg.subject}</div>}
+                      <div className="text-slate-600 dark:text-slate-400 mt-2 p-4 bg-slate-50 dark:bg-primary rounded-xl text-sm whitespace-pre-wrap border border-slate-100 dark:border-white/5">
+                        {msg.message}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 

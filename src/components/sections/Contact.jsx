@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import portfolioData from '../../data/portfolioData.json';
 
 export default function Contact() {
   const { phone, email, location } = portfolioData.contact;
+  
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle');
+
+  const handleChange = (e) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+    setStatus('sending');
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
 
   return (
     <section id="contact" className="py-24">
@@ -95,21 +122,27 @@ export default function Contact() {
             className="lg:col-span-3 space-y-8"
           >
             <div className="glass-card p-8">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Name</label>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Name *</label>
                     <input 
                       type="text" 
-
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Email</label>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Email *</label>
                     <input 
                       type="email" 
-
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white"
                     />
                   </div>
@@ -119,26 +152,35 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Subject</label>
                   <input 
                     type="text" 
-
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message *</label>
                   <textarea 
                     rows="4" 
-
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-800 dark:text-white resize-none"
                   ></textarea>
                 </div>
 
+                {status === 'success' && <div className="text-sm font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">Message sent successfully! I'll get back to you soon.</div>}
+                {status === 'error' && <div className="text-sm font-medium text-red-600 bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">Failed to send message. Please try again.</div>}
+
                 <button 
-                  type="button"
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-secondary hover:bg-blue-600 text-white font-medium flex items-center justify-center gap-2 transition-all shadow-lg shadow-secondary/30"
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-secondary hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed text-white font-medium flex items-center justify-center gap-2 transition-all shadow-lg shadow-secondary/30"
                 >
-                  <Send size={18} />
-                  Send Message
+                  <Send size={18} className={status === 'sending' ? 'animate-pulse' : ''} />
+                  {status === 'sending' ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>

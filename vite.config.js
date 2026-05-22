@@ -28,6 +28,28 @@ function localCmsPlugin() {
               res.end(JSON.stringify({ success: false, error: error.message }));
             }
           });
+        } else if (req.url === '/api/submit-form' && req.method === 'POST') {
+          const { default: fs } = await import('fs');
+          const { default: path } = await import('path');
+          let body = '';
+          req.on('data', chunk => { body += chunk.toString(); });
+          req.on('end', () => {
+            try {
+              const dataPath = path.resolve(process.cwd(), './src/data/messages.json');
+              const parsedData = JSON.parse(body);
+              let messages = [];
+              if (fs.existsSync(dataPath)) {
+                messages = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+              }
+              messages.push(parsedData);
+              fs.writeFileSync(dataPath, JSON.stringify(messages, null, 2));
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ success: true, message: 'Message sent successfully!' }));
+            } catch (error) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ success: false, error: error.message }));
+            }
+          });
         } else {
           next();
         }
