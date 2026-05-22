@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import portfolioData from '../data/portfolioData.json';
-import { Save, CheckCircle, AlertCircle, ArrowLeft, Plus, Trash2, LayoutDashboard, User, Briefcase, Code, Phone, FileJson, Award, Trophy, BookOpen, Settings, Github } from 'lucide-react';
+import { Save, CheckCircle, AlertCircle, ArrowLeft, Plus, Trash2, LayoutDashboard, User, Briefcase, Code, Phone, FileJson, Award, Trophy, BookOpen, Settings, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AdminPanel() {
@@ -260,7 +260,7 @@ export default function AdminPanel() {
           {activeTab === 'Settings' && (
             <div className="glass-card p-6 space-y-6">
               <div className="flex items-center gap-3 text-secondary mb-2">
-                <Github size={24} />
+                <Database size={24} />
                 <h3 className="text-lg font-bold text-slate-800 dark:text-white">GitHub Deployment Settings</h3>
               </div>
               <div className="p-4 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded-xl text-sm leading-relaxed">
