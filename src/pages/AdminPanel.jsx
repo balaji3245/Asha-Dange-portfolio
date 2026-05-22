@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import portfolioData from '../data/portfolioData.json';
-import { Save, CheckCircle, AlertCircle, ArrowLeft, Plus, Trash2, LayoutDashboard, User, Briefcase, Code, Phone, FileJson, Award, Trophy, BookOpen, Settings, Database } from 'lucide-react';
+import { Save, CheckCircle, AlertCircle, ArrowLeft, Plus, Trash2, LayoutDashboard, User, Briefcase, Code, Phone, FileJson, Award, Trophy, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AdminPanel() {
@@ -9,8 +9,6 @@ export default function AdminPanel() {
   const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
   const [activeTab, setActiveTab] = useState('Hero');
-  const [githubToken, setGithubToken] = useState(localStorage.getItem('github_token') || '');
-  const [githubRepo, setGithubRepo] = useState(localStorage.getItem('github_repo') || 'balaji3245/Asha-Dange-portfolio');
 
   const tabs = [
     { id: 'Hero', icon: <LayoutDashboard size={18} /> },
@@ -21,8 +19,7 @@ export default function AdminPanel() {
     { id: 'Certifications', icon: <Award size={18} /> },
     { id: 'Achievements', icon: <Trophy size={18} /> },
     { id: 'Contact', icon: <Phone size={18} /> },
-    { id: 'Advanced', icon: <FileJson size={18} /> },
-    { id: 'Settings', icon: <Settings size={18} /> }
+    { id: 'Advanced', icon: <FileJson size={18} /> }
   ];
 
   const handleChange = (section, field, value) => {
@@ -70,53 +67,24 @@ export default function AdminPanel() {
     try { setData(JSON.parse(e.target.value)); } catch (e) {}
   };
 
-  const utf8ToBase64 = (str) => {
-    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
-  };
-
   const handleSave = async () => {
     setStatus('saving');
     try {
       const payload = activeTab === 'Advanced' ? JSON.parse(jsonText) : data;
-      const jsonString = JSON.stringify(payload, null, 2);
-
-      if (githubToken && githubRepo) {
-        const repoUrl = `https://api.github.com/repos/${githubRepo}/contents/src/data/portfolioData.json`;
-        
-        // 1. Get current file SHA
-        const getRes = await fetch(repoUrl, { headers: { 'Authorization': `token ${githubToken}` } });
-        if (!getRes.ok) throw new Error(`GitHub Auth Failed (${getRes.status}). Check Token & Repo.`);
-        const fileData = await getRes.json();
-        
-        // 2. PUT updated content
-        const putRes = await fetch(repoUrl, {
-          method: 'PUT',
-          headers: { 'Authorization': `token ${githubToken}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: 'Update portfolio data via Admin Panel',
-            content: utf8ToBase64(jsonString),
-            sha: fileData.sha
-          })
-        });
-        if (!putRes.ok) throw new Error(`GitHub Save Failed (${putRes.status}).`);
-      } else {
-        // Fallback to local dev API
-        const response = await fetch('/api/save-portfolio', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: jsonString
-        });
-        const result = await response.json();
-        if (!result.success) throw new Error(result.error);
-      }
-
-      setStatus('success'); setMessage('Updated successfully!');
-      if (activeTab !== 'Advanced') setJsonText(jsonString);
-      setTimeout(() => setStatus('idle'), 3000);
+      const response = await fetch('/api/save-portfolio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success'); setMessage('Updated successfully!');
+        if (activeTab !== 'Advanced') setJsonText(JSON.stringify(payload, null, 2));
+        setTimeout(() => setStatus('idle'), 3000);
+      } else throw new Error(result.error);
     } catch (error) {
-      setStatus('error'); 
-      setMessage(error instanceof SyntaxError ? 'Invalid JSON.' : error.message);
-      setTimeout(() => setStatus('idle'), 6000);
+      setStatus('error'); setMessage(error instanceof SyntaxError ? 'Invalid JSON.' : 'Failed to save. Run Vite locally.');
+      setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
@@ -254,44 +222,6 @@ export default function AdminPanel() {
             <div className="glass-card p-6">
               <p className="text-sm text-slate-500 mb-4">Edit the raw JSON configuration directly.</p>
               <textarea value={jsonText} onChange={handleJsonChange} className="w-full h-[600px] font-mono text-sm p-4 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary resize-none" spellCheck="false" />
-            </div>
-          )}
-
-          {activeTab === 'Settings' && (
-            <div className="glass-card p-6 space-y-6">
-              <div className="flex items-center gap-3 text-secondary mb-2">
-                <Database size={24} />
-                <h3 className="text-lg font-bold text-slate-800 dark:text-white">GitHub Deployment Settings</h3>
-              </div>
-              <div className="p-4 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded-xl text-sm leading-relaxed">
-                By configuring these settings, the Admin Panel will save changes directly to your live GitHub repository. Vercel will automatically redeploy the site with your updates.
-              </div>
-              <div className="space-y-5">
-                <div>
-                  <label className="block text-sm font-semibold mb-1 dark:text-slate-300">GitHub Repository (Username/RepoName)</label>
-                  <input 
-                    type="text" 
-                    value={githubRepo} 
-                    onChange={(e) => { setGithubRepo(e.target.value); localStorage.setItem('github_repo', e.target.value); }}
-                    className="w-full p-3 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" 
-                    placeholder="e.g. balaji3245/Asha-Dange-portfolio"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-1 dark:text-slate-300">Personal Access Token (Classic)</label>
-                  <input 
-                    type="password" 
-                    value={githubToken} 
-                    onChange={(e) => { setGithubToken(e.target.value); localStorage.setItem('github_token', e.target.value); }}
-                    className="w-full p-3 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" 
-                    placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxx"
-                  />
-                  <p className="text-xs text-slate-500 mt-2">
-                    Your token is saved locally in your browser and never sent anywhere except directly to GitHub's API. 
-                    Needs `repo` scope to update the data file.
-                  </p>
-                </div>
-              </div>
             </div>
           )}
 
