@@ -101,8 +101,15 @@ export default function Certifications() {
                   <X size={20} />
                 </button>
               </div>
-              <div className="flex-1 w-full bg-slate-100 dark:bg-slate-950">
-                <iframe src={`${selectedCert}#toolbar=0`} className="w-full h-full border-0" title="Certificate PDF Preview" />
+              <div className="flex-1 w-full bg-slate-100 dark:bg-slate-950 relative">
+                <object data={selectedCert} type="application/pdf" className="w-full h-full">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">Your browser does not support inline PDF viewing.</p>
+                    <a href={selectedCert} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-secondary hover:bg-blue-600 text-white rounded-lg font-medium transition-colors">
+                      Open Certificate
+                    </a>
+                  </div>
+                </object>
               </div>
             </motion.div>
           </motion.div>
