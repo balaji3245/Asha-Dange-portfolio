@@ -102,7 +102,7 @@ export default function Certifications() {
                 </button>
               </div>
               <div className="flex-1 w-full bg-slate-100 dark:bg-slate-950 relative">
-                <object data={selectedCert} type="application/pdf" className="w-full h-full">
+                <object data={`${selectedCert}#view=Fit`} type="application/pdf" className="w-full h-full">
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                     <p className="text-slate-600 dark:text-slate-400 mb-4">Your browser does not support inline PDF viewing.</p>
                     <a href={selectedCert} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-secondary hover:bg-blue-600 text-white rounded-lg font-medium transition-colors">
