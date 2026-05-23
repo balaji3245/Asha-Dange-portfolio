@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Award, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Award, X } from 'lucide-react';
 import portfolioData from '../../data/portfolioData.json';
 
 export default function Certifications() {
   const certifications = portfolioData.certifications || [];
   const [showAll, setShowAll] = useState(false);
+  const [selectedCert, setSelectedCert] = useState(null);
 
   const visibleCertifications = showAll ? certifications : certifications.slice(0, 4);
 
@@ -35,11 +36,9 @@ export default function Certifications() {
               transition={{ delay: (idx % 4) * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
             >
-              <a 
-                href={cert.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="glass-card p-6 border border-slate-100 dark:border-white/5 flex flex-col items-center text-center gap-4 h-full transition-all hover:shadow-xl hover:shadow-secondary/10 hover:border-secondary/30"
+              <div 
+                onClick={() => setSelectedCert(cert.link)}
+                className="glass-card p-6 border border-slate-100 dark:border-white/5 flex flex-col items-center text-center gap-4 h-full transition-all hover:shadow-xl hover:shadow-secondary/10 hover:border-secondary/30 cursor-pointer"
               >
                 <div className="p-4 bg-secondary/10 dark:bg-primary rounded-full text-secondary dark:text-accent shrink-0">
                   <Award size={32} />
@@ -52,7 +51,7 @@ export default function Certifications() {
                     {cert.issuer}
                   </span>
                 </div>
-              </a>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -74,6 +73,41 @@ export default function Certifications() {
         )}
 
       </div>
+
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm" 
+            onClick={() => setSelectedCert(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="relative w-full max-w-5xl h-[85vh] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col" 
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-primary">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                  <Award size={20} className="text-secondary" /> Certificate Preview
+                </h3>
+                <button 
+                  onClick={() => setSelectedCert(null)} 
+                  className="p-2 rounded-lg bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-red-500 hover:text-white dark:hover:bg-red-500 transition-colors"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="flex-1 w-full bg-slate-100 dark:bg-slate-950">
+                <iframe src={`${selectedCert}#toolbar=0`} className="w-full h-full border-0" title="Certificate PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
