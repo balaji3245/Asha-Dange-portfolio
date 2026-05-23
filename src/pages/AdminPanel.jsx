@@ -182,13 +182,14 @@ export default function AdminPanel() {
 
           {activeTab === 'Certifications' && (
             <div className="space-y-6">
-              <button onClick={() => addArrayItem('certifications', { title: "New Certification", issuer: "Issuer" })} className="w-full py-4 border-2 border-dashed border-slate-300 dark:border-white/20 rounded-xl text-slate-500 hover:bg-slate-50 dark:hover:bg-white/5 flex items-center justify-center gap-2 font-medium transition-colors"><Plus size={18} /> Add Certification</button>
+              <button onClick={() => addArrayItem('certifications', { title: "New Certification", issuer: "Issuer", link: "" })} className="w-full py-4 border-2 border-dashed border-slate-300 dark:border-white/20 rounded-xl text-slate-500 hover:bg-slate-50 dark:hover:bg-white/5 flex items-center justify-center gap-2 font-medium transition-colors"><Plus size={18} /> Add Certification</button>
               {data.certifications.map((item, idx) => (
                 <div key={idx} className="glass-card p-6 space-y-4 relative group">
                   <button onClick={() => removeArrayItem('certifications', idx)} className="absolute top-4 right-4 p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors"><Trash2 size={18} /></button>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pr-12">
-                    <div><label className="block text-xs font-semibold mb-1 dark:text-slate-400">Certification Name</label><input type="text" value={item.title} onChange={e => handleArrayChange('certifications', idx, 'title', e.target.value)} className="w-full p-2.5 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" /></div>
+                    <div className="md:col-span-2"><label className="block text-xs font-semibold mb-1 dark:text-slate-400">Certification Name</label><input type="text" value={item.title} onChange={e => handleArrayChange('certifications', idx, 'title', e.target.value)} className="w-full p-2.5 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" /></div>
                     <div><label className="block text-xs font-semibold mb-1 dark:text-slate-400">Issuer</label><input type="text" value={item.issuer} onChange={e => handleArrayChange('certifications', idx, 'issuer', e.target.value)} className="w-full p-2.5 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" /></div>
+                    <div><label className="block text-xs font-semibold mb-1 dark:text-slate-400">PDF Link</label><input type="text" value={item.link || ''} onChange={e => handleArrayChange('certifications', idx, 'link', e.target.value)} className="w-full p-2.5 rounded-lg bg-slate-50 dark:bg-primary border border-slate-200 dark:border-white/10 dark:text-white" placeholder="/certificate_01.pdf" /></div>
                   </div>
                 </div>
               ))}
